@@ -1,9 +1,16 @@
 #ifndef __BMBC_ERRNO_H_INCLUDED_
 #define __BMBC_ERRNO_H_INCLUDED_
 
-extern int my_errno;
-#define errno my_errno
+/*
+ * Define errno as a macro that expands to the value pointed to by
+ * __errno_location(). This allows the user to access and modify errno
+ * in a controlled way, while preventing them from redefining or
+ * directly declaring a conflicting global variable.
+ */
+int *__errno_location(void);
+#define errno (*__errno_location())
 
+// Error codes as defined by POSIX and other standards.
 #define EPERM             1  /* Operation not permitted */
 #define ENOENT            2  /* No such file or directory */
 #define ESRCH             3  /* No such process */

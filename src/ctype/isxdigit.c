@@ -1,5 +1,5 @@
 /*
- * Return 1 if c is a hexadecimal digit (0-9, A-F, a-f), and 0 otherwise.
+ * Return 1 if c is a hexadecimal digit (0-9, A-F, a-f).
  */
 int isxdigit(int c) {
     return (48 <= c && c <= 57)
